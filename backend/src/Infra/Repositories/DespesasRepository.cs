@@ -1,19 +1,20 @@
 ﻿using Core.Entities;
 using Core.Repositories;
 using Infra.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Repositories;
 
 internal class DespesasRepository(AppDbContext dbContext) : IDespesaRepository
 {
-    public Task<Despesa?> GetByIdAsync(Guid id)
+    public async Task<Despesa?> GetByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        return await dbContext.Despesas.FindAsync(id);
     }
 
-    public Task<IEnumerable<Despesa>> GetAllAsync()
+    public async Task<IEnumerable<Despesa>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await dbContext.Despesas.AsNoTracking().Take(100).ToListAsync();
     }
 
     public async  Task AddAsync(Despesa despesa)
@@ -22,13 +23,15 @@ internal class DespesasRepository(AppDbContext dbContext) : IDespesaRepository
         await dbContext.SaveChangesAsync();
     }
 
-    public Task UpdateAsync(Despesa despesa)
+    public async Task UpdateAsync(Despesa despesa)
     {
-        throw new NotImplementedException();
+        dbContext.Despesas.Update(despesa);
+        await dbContext.SaveChangesAsync();
     }
 
-    public Task DeleteAsync(Despesa despesa)
+    public async Task DeleteAsync(Despesa despesa)
     {
-        throw new NotImplementedException();
+        dbContext.Despesas.Remove(despesa);
+        await dbContext.SaveChangesAsync();
     }
 }
