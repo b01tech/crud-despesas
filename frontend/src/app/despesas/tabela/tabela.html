@@ -6,10 +6,12 @@
       <tr
         class="text-zinc-400 text-xs uppercase tracking-wider font-medium border-b border-zinc-800"
       >
-        <th class="p-4 font-semibold">Descrição</th>
+        <th class="p-4 font-semibold text-center">ID</th>
+        <th class="p-4 font-semibold text-center">Descrição</th>
         <th class="p-4 font-semibold text-center">Data e Hora</th>
         <th class="p-4 font-semibold text-center">Status</th>
-        <th class="p-4 font-semibold text-right">Valor</th>
+        <th class="p-4 font-semibold text-center">Valor</th>
+        <th class="p-4 font-semibold text-center">Ações</th>
       </tr>
     </thead>
     <tbody class="divide-y divide-zinc-800">
@@ -22,6 +24,9 @@
       }
       @for (despesa of listaDespesas(); track $index) {
         <tr class="hover:bg-zinc-800/50 transition-colors duration-200 group">
+          <td class="p-4 text-xs text-zinc-200 font-thin group-hover:text-white">
+            {{ despesa.id }}
+          </td>
           <td class="p-4 text-zinc-200 font-medium group-hover:text-white">
             {{ despesa.descricao }}
           </td>
@@ -38,6 +43,16 @@
           </td>
           <td class="p-4 text-right font-mono text-zinc-300 group-hover:text-white">
             {{ despesa.valor | currency: 'BRL' }}
+          </td>
+          <td class="p-4 text-right text-zinc-300 gap-2 flex">
+            <span
+              class="material-symbols-outlined bg-sky-500 text-sky-200 p-1 rounded-lg hover:bg-sky-600 hover:cursor-pointer"
+              >edit</span
+            >
+            <span
+              class="material-symbols-outlined bg-red-500 text-red-200 p-1 rounded-lg hover:bg-red-600 hover:cursor-pointer"
+              >delete</span
+            >
           </td>
         </tr>
       }
