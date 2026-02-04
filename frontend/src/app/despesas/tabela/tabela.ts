@@ -3,6 +3,7 @@ import { DespesasApiResponse } from '../models/despesas-api-response';
 import { DatePipe, CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { DepesaService } from '../services/depesa-service';
+import { DespesaUpdateRequest } from '../models/despesa-update-request';
 
 @Component({
   selector: 'app-tabela',
@@ -13,13 +14,25 @@ import { DepesaService } from '../services/depesa-service';
 export class Tabela {
   private readonly _despesaService = inject(DepesaService);
   listaDespesas = input<DespesasApiResponse[]>([]);
-  despesaExcluida = output<void>();
+  despesaAtualizada = output<void>();
+
+  editarDespesa(request: DespesaUpdateRequest) {
+    this._despesaService.putDespesa(request).subscribe({
+      next: () => {
+        console.log(`Despesa ${request.id} atualizada com sucesso`);
+        this.despesaAtualizada.emit();
+      },
+      error: (error) => {
+        console.error('Erro ao atualizar despesa:', error);
+      },
+    });
+  }
 
   deleteDespesa(id: string) {
     this._despesaService.deleteDespesa(id).subscribe({
       next: () => {
         console.log(`Despesa ${id} excluída com sucesso`);
-        this.despesaExcluida.emit();
+        this.despesaAtualizada.emit();
       },
       error: (error) => {
         console.error('Erro ao excluir despesa:', error);
