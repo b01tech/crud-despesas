@@ -3,10 +3,12 @@ import { Component, computed, inject, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DespesasApiResponse } from '../models/despesas-api-response';
 import { DepesaService } from '../services/depesa-service';
+import { Total } from './components/total/total';
+import { DadosUsuario } from './components/dados-usuario/dados-usuario';
 
 @Component({
   selector: 'app-tabela',
-  imports: [DatePipe, CurrencyPipe, RouterLink],
+  imports: [DatePipe, CurrencyPipe, RouterLink, Total, DadosUsuario],
   templateUrl: './tabela.html',
   styleUrl: './tabela.css',
 })
