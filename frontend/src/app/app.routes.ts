@@ -15,4 +15,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./despesas/criar-despesa/criar-despesa').then((mod) => mod.CriarDespesa),
   },
+  {
+    path: 'despesas/editar',
+    loadComponent: () =>
+      import('./despesas/editar-despesa/editar-despesa').then((mod) => mod.EditarDespesa),
+  },
 ];
