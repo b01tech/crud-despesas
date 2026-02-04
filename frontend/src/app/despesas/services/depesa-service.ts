@@ -15,6 +15,9 @@ export class DepesaService {
   getDespesas() {
     return this._httpClient.get<DespesasApiResponse[]>(`${this._apiUrl}/despesas`);
   }
+  getDespesaById(id: string) {
+    return this._httpClient.get<DespesasApiResponse>(`${this._apiUrl}/despesas/${id}`);
+  }
   postDespesa(request: DepesaCreateRequest) {
     return this._httpClient.post<DespesasApiResponse>(`${this._apiUrl}/despesas`, request);
   }
