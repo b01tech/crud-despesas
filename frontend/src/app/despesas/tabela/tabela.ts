@@ -16,18 +16,6 @@ export class Tabela {
   listaDespesas = input<DespesasApiResponse[]>([]);
   despesaAtualizada = output<void>();
 
-  editarDespesa(request: DespesaUpdateRequest) {
-    this._despesaService.putDespesa(request).subscribe({
-      next: () => {
-        console.log(`Despesa ${request.id} atualizada com sucesso`);
-        this.despesaAtualizada.emit();
-      },
-      error: (error) => {
-        console.error('Erro ao atualizar despesa:', error);
-      },
-    });
-  }
-
   deleteDespesa(id: string) {
     this._despesaService.deleteDespesa(id).subscribe({
       next: () => {
