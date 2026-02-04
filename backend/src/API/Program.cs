@@ -1,5 +1,5 @@
-using API.Handlers;
 using API.Controllers;
+using API.Handlers;
 using Infra.Extensions;
 using Scalar.AspNetCore;
 
@@ -7,12 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
+builder.Services.AddCors(options =>
+    options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
 builder.Services
     .AddInfrastructure(builder.Configuration)
     .AddUseCases();
 
 var app = builder.Build();
+
 
 app.MapOpenApi();
 app.MapScalarApiReference("/docs", options =>
@@ -23,6 +26,6 @@ app.MapScalarApiReference("/docs", options =>
 
 app.MapAppEndpoints();
 app.UseHttpsRedirection();
-
+app.UseCors();
 
 app.Run();
