@@ -3,6 +3,7 @@ import { environment } from '../../../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { DespesasApiResponse } from '../models/despesas-api-response';
 import { DepesaCreateRequest } from '../models/depesa-create-request';
+import { DespesaUpdateRequest } from '../models/despesa-update-request';
 
 @Injectable({
   providedIn: 'root',
@@ -19,5 +20,8 @@ export class DepesaService {
   }
   deleteDespesa(id: string) {
     return this._httpClient.delete(`${this._apiUrl}/despesas/${id}`);
+  }
+  putDespesa(request: DespesaUpdateRequest) {
+    return this._httpClient.put(`${this._apiUrl}/despesas`, request);
   }
 }
