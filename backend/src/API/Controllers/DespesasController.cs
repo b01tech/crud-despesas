@@ -6,7 +6,7 @@ namespace API.Controllers;
 
 public static class DespesasController
 {
-    public static void MapAppEndpoints(this IEndpointRouteBuilder app)
+    public static void MapDespesasEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("despesas").WithTags("Despesas");
 
