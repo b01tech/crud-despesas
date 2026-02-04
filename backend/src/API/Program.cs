@@ -12,6 +12,7 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
 builder.Services.AddJwtAuthentication(builder.Configuration);
+
 builder.Services.AddAuthorization();
 
 builder.Services
