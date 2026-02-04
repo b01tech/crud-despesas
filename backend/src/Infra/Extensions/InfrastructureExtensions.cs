@@ -15,6 +15,7 @@ public static class InfrastructureExtensions
         services.AddDbContext<AppDbContext>(options => options.UseSqlite(connectionString));
 
         services.AddScoped<IDespesaRepository, DespesasRepository>();
+        services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
         return services;
     }
