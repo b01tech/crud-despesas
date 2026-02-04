@@ -5,7 +5,7 @@ using Core.UseCases.Usuario;
 
 namespace API.Handlers.Usuario;
 
-public class LoginUsuarioUseCase(IUsuarioRepository repository, IEncrypter encrypter) : ILoginUsuarioUseCase
+public class LoginUsuarioUseCase(IUsuarioRepository repository, IEncrypter encrypter, ITokenService tokenService) : ILoginUsuarioUseCase
 {
     public async Task<TokenResponseDto?> ExecuteAsync(LoginUsuarioDto request)
     {
@@ -15,7 +15,8 @@ public class LoginUsuarioUseCase(IUsuarioRepository repository, IEncrypter encry
         var isPasswordValid = encrypter.Verify(request.Senha, usuario.HashSenha);
         if (!isPasswordValid)
             return null;
+        var token = tokenService.GenerateToken(usuario.Nome);
 
-        return new TokenResponseDto("token criado com sucesso");
+        return new TokenResponseDto(token);
     }
 }
