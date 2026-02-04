@@ -11,6 +11,6 @@ public class GetDespesaUseCase(IDespesaRepository repository) : IGetDespesaUseCa
         var despesa = await repository.GetByIdAsync(id);
         return despesa is null
             ? null
-            : new DespesaDto(despesa.Descricao, despesa.DataHora, despesa.Pago, despesa.Valor);
+            : new DespesaDto(despesa.Id, despesa.Descricao, despesa.DataHora, despesa.Pago, despesa.Valor);
     }
 }
