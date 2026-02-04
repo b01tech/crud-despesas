@@ -17,4 +17,7 @@ export class DepesaService {
   postDespesa(request: DepesaCreateRequest) {
     return this._httpClient.post<DespesasApiResponse>(`${this._apiUrl}/despesas`, request);
   }
+  deleteDespesa(id: string) {
+    return this._httpClient.delete(`${this._apiUrl}/despesas/${id}`);
+  }
 }
