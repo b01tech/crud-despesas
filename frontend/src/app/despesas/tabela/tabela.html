@@ -1,1 +1,46 @@
-<p>tabela works!</p>
+<div
+  class="w-full min-h-64 overflow-hidden rounded-xl shadow-2xl bg-zinc-900 border border-zinc-800"
+>
+  <table class="w-full text-left border-collapse">
+    <thead class="bg-zinc-950/50">
+      <tr
+        class="text-zinc-400 text-xs uppercase tracking-wider font-medium border-b border-zinc-800"
+      >
+        <th class="p-4 font-semibold">Descrição</th>
+        <th class="p-4 font-semibold text-center">Data e Hora</th>
+        <th class="p-4 font-semibold text-center">Status</th>
+        <th class="p-4 font-semibold text-right">Valor</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-zinc-800">
+      @if (listaDespesas().length === 0) {
+        <tr>
+          <td colspan="4" class="text-center p-8 text-zinc-500 italic">
+            Nenhuma despesa cadastrada.
+          </td>
+        </tr>
+      }
+      @for (despesa of listaDespesas(); track $index) {
+        <tr class="hover:bg-zinc-800/50 transition-colors duration-200 group">
+          <td class="p-4 text-zinc-200 font-medium group-hover:text-white">
+            {{ despesa.descricao }}
+          </td>
+          <td class="p-4 text-zinc-400 text-sm">
+            {{ despesa.dataHora | date: 'dd/MM/yyyy' }}
+          </td>
+          <td class="p-4 text-center">
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border"
+              [class]="despesa.pago ? 'pago' : 'pendente'"
+            >
+              {{ despesa.pago ? 'Pago' : 'Pendente' }}
+            </span>
+          </td>
+          <td class="p-4 text-right font-mono text-zinc-300 group-hover:text-white">
+            {{ despesa.valor | currency: 'BRL' }}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
