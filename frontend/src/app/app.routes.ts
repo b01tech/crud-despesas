@@ -16,7 +16,7 @@ export const routes: Routes = [
       import('./despesas/criar-despesa/criar-despesa').then((mod) => mod.CriarDespesa),
   },
   {
-    path: 'despesas/editar',
+    path: 'despesas/editar/:id',
     loadComponent: () =>
       import('./despesas/editar-despesa/editar-despesa').then((mod) => mod.EditarDespesa),
   },
