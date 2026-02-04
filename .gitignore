@@ -486,3 +486,8 @@ $RECYCLE.BIN/
 # .net settings
 appsettings.Development.json
 appsettings.json
+
+# SQLite database files
+backend/src/Infra/Data/despesas.db
+backend/src/Infra/Data/despesas.db-wal
+backend/src/Infra/Data/despesas.db-shm
