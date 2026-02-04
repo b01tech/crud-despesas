@@ -4,5 +4,5 @@ namespace Core.UseCases.Usuario;
 
 public interface ILoginUsuarioUseCase
 {
-    Task ExecuteAsync(LoginUsuarioDto request);
+    Task<TokenResponseDto?> ExecuteAsync(LoginUsuarioDto request);
 }
