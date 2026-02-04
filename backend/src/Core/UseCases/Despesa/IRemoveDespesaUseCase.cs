@@ -2,5 +2,5 @@
 
 public interface IRemoveDespesaUseCase
 {
-    
+    Task ExecuteAsync(Guid id);
 }
