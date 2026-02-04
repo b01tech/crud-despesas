@@ -1,1 +1,93 @@
-<p>criar-despesa works!</p>
+<div class="max-w-2xl mx-auto p-6">
+  <div class="bg-zinc-900 rounded-xl shadow-2xl border border-zinc-800 overflow-hidden">
+    <div class="px-6 py-4 border-b border-zinc-800 bg-zinc-950/50">
+      <h2 class="text-xl font-semibold text-white">Nova Despesa</h2>
+      <p class="text-sm text-zinc-400 mt-1">
+        Preencha os dados abaixo para cadastrar uma nova despesa.
+      </p>
+    </div>
+
+    <form [formGroup]="form" class="p-6 space-y-6">
+      <!-- Descrição -->
+      <div class="space-y-2">
+        <label for="descricao" class="block text-sm font-medium text-zinc-300"> Descrição </label>
+        <input
+          type="text"
+          id="descricao"
+          formControlName="descricao"
+          placeholder="Ex: Compras do mês"
+          class="w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-4 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Data -->
+        <div class="space-y-2">
+          <label for="dataHora" class="block text-sm font-medium text-zinc-300">
+            Data e Hora
+          </label>
+          <input
+            type="datetime-local"
+            id="dataHora"
+            formControlName="dataHora"
+            class="w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-4 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all scheme-dark"
+          />
+        </div>
+
+        <!-- Valor -->
+        <div class="space-y-2">
+          <label for="valor" class="block text-sm font-medium text-zinc-300"> Valor (R$) </label>
+          <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500">R$</span>
+            <input
+              type="number"
+              id="valor"
+              formControlName="valor"
+              step="0.01"
+              min="0"
+              placeholder="0,00"
+              class="w-full bg-zinc-800/50 border border-zinc-700 rounded-lg pl-10 pr-4 py-2.5 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Toggle Pago -->
+      <div
+        class="flex items-center justify-between p-4 bg-zinc-800/30 rounded-lg border border-zinc-800/50"
+      >
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-zinc-200">Status de Pagamento</span>
+          <span class="text-xs text-zinc-500">A despesa já foi paga?</span>
+        </div>
+
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" formControlName="pago" class="sr-only peer" />
+          <div
+            class="w-11 h-6 bg-zinc-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-emerald-500/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"
+          ></div>
+          <span class="ml-3 text-sm font-medium text-zinc-300 min-w-12">
+            {{ form.get('pago')?.value ? 'Sim' : 'Não' }}
+          </span>
+        </label>
+      </div>
+    </form>
+
+    <div class="px-6 py-4 bg-zinc-950/30 border-t border-zinc-800 flex justify-end gap-3">
+      <button
+        type="button"
+        routerLink="/despesas"
+        class="px-4 py-2 text-sm font-medium text-zinc-300 hover:text-white bg-transparent hover:bg-zinc-800 rounded-lg transition-colors hover:cursor-pointer"
+      >
+        Cancelar
+      </button>
+      <button
+        type="button"
+        class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg shadow-lg shadow-emerald-900/20 transition-all focus:ring-2 focus:ring-emerald-500/50 focus:ring-offset-2 focus:ring-offset-zinc-900 disabled:opacity-50 disabled:cursor-not-allowed hover:cursor-pointer"
+        [disabled]="form.invalid"
+      >
+        Salvar
+      </button>
+    </div>
+  </div>
+</div>
