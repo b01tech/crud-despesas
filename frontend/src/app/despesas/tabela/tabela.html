@@ -60,7 +60,7 @@
           </td>
           <td class="p-4 text-right text-zinc-300 gap-2 flex">
             <span
-              routerLink="/despesas/editar"
+              [routerLink]="['/despesas/editar', despesa.id]"
               title="Editar despesa"
               class="material-symbols-outlined bg-sky-500 text-sky-200 p-1 rounded-lg hover:bg-sky-600 hover:cursor-pointer"
               >edit</span
