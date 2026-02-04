@@ -17,4 +17,11 @@ public class Despesa
         Valor = valor;
         Pago = pago;
     }
+    public void Update(string descricao, DateTime dataHora, decimal valor, bool pago = false)
+    {
+        Descricao = descricao;
+        DataHora = dataHora;
+        Valor = valor;
+        Pago = pago;
+    }
 }
