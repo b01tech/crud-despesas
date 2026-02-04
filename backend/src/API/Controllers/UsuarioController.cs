@@ -21,9 +21,10 @@ public static class UsuarioController
         group.MapPost("/login",
                 async ([FromBody] LoginUsuarioDto request, [FromServices] ILoginUsuarioUseCase useCase) =>
                 {
-                    var token = new TokenResponseDto("teste");
-                    await useCase.ExecuteAsync(request);
-                    return Results.Ok(token);
+                    var token = await useCase.ExecuteAsync(request);
+                    return token is null
+                        ? Results.Unauthorized()
+                        : Results.Ok(token);
                 }).WithName("LoginUsuario")
             .WithSummary("Realiza login do usuário")
             .Produces(StatusCodes.Status200OK);
