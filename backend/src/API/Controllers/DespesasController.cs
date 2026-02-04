@@ -33,7 +33,7 @@ public static class DespesasController
             await useCase.ExecuteAsync(id);
             return Results.NoContent();
         });
-        group.MapPut("/", async ([FromRoute]Guid id, [FromBody]UpdateDespesaDto request, [FromServices]IUpdateDespesaUseCase useCase) =>
+        group.MapPut("/", async ([FromBody]UpdateDespesaDto request, [FromServices]IUpdateDespesaUseCase useCase) =>
         {
             await useCase.ExecuteAsync(request);
             return Results.NoContent();
