@@ -2,10 +2,10 @@
   class="w-full min-h-64 overflow-hidden rounded-xl shadow-2xl bg-zinc-900 border border-zinc-800"
 >
   <div class="flex p-4 justify-between items-center">
-    <span class="text-sm text-zinc-400 font-medium">Total de Despesas:</span>
+    <span class="text-sm text-zinc-400 font-medium">Usuário:</span>
     <button
       title="Adicionar nova despesa"
-      class="bg-sky-600 text-sky-100 px-4 py-2 rounded-md text-xs font-medium transition-colors duration-200 cursor-pointer"
+      class="bg-sky-600 text-sky-100 hover:bg-sky-700 px-4 py-2 rounded-md text-xs font-medium transition-colors duration-200 cursor-pointer"
       routerLink="/despesas/criar"
     >
       Adicionar Despesa
@@ -76,4 +76,8 @@
       }
     </tbody>
   </table>
+  <div class="flex p-4 gap-2 justify-end items-center">
+    <span class="text-sm text-zinc-400 font-medium">Total:</span>
+    <span class="text-sm text-zinc-200 font-medium">{{ totalDespesas() | currency: 'BRL' }}</span>
+  </div>
 </div>
