@@ -1,3 +1,3 @@
 ﻿namespace Core.Dtos;
 
-public record DespesaDto(string Descricao, DateTime DataHora, bool Pago, decimal Valor);
+public record DespesaDto(Guid Id, string Descricao, DateTime DataHora, bool Pago, decimal Valor);
