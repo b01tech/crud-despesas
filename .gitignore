@@ -492,3 +492,6 @@ appsettings.json
 *.db-wal
 *.db-shm
 
+# env files
+environment.prod.ts
+environment.development.ts
