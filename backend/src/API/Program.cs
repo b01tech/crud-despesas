@@ -1,5 +1,6 @@
 using API.Controllers;
 using API.Handlers;
+using API.Services;
 using Infra.Extensions;
 using Scalar.AspNetCore;
 
@@ -12,7 +13,8 @@ builder.Services.AddCors(options =>
 
 builder.Services
     .AddInfrastructure(builder.Configuration)
-    .AddUseCases();
+    .AddUseCases()
+    .AddAppServices();
 
 var app = builder.Build();
 
