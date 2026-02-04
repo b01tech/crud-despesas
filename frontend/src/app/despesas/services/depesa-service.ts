@@ -10,7 +10,7 @@ export class DepesaService {
   private readonly _apiUrl = environment.apiUrl;
   private readonly _httpClient = inject(HttpClient);
 
-  async getDespesas() {
+  getDespesas() {
     return this._httpClient.get<DespesasApiResponse[]>(`${this._apiUrl}/despesas`);
   }
 }
