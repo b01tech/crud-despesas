@@ -15,6 +15,10 @@ export class Despesas implements OnInit {
   despesas = signal<DespesasApiResponse[]>([]);
 
   ngOnInit() {
+    this.buscarDespesas();
+  }
+
+  buscarDespesas() {
     this._despesaService.getDespesas().subscribe({
       next: (response) => {
         console.log('Dados recebidos:', response);
