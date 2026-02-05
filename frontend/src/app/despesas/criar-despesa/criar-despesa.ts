@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { DepesaCreateRequest } from '../models/depesa-create-request';
-import { DepesaService } from '../services/depesa-service';
+import { DepesaService } from '../services/depesa.service';
 
 @Component({
   selector: 'app-criar-despesa',

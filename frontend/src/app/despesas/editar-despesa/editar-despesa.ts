@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { DespesaUpdateRequest } from '../models/despesa-update-request';
-import { DepesaService } from '../services/depesa-service';
+import { DepesaService } from '../services/depesa.service';
 
 @Component({
   selector: 'app-editar-despesa',

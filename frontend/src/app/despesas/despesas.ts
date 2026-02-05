@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Tabela } from './tabela/tabela';
-import { DepesaService } from './services/depesa-service';
+import { DepesaService } from './services/depesa.service';
 import { DespesasApiResponse } from './models/despesas-api-response';
 
 @Component({
