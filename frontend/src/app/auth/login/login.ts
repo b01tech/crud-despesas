@@ -24,7 +24,8 @@ export class Login {
     if (this.loginForm.valid) {
       this._authService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (response) => {
-          this._router.navigate(['/']);
+          document.cookie = `access_token=${response.token}; path=/`;
+          this._router.navigate(['/despesas']);
         },
         error: (error) => {
           console.error('Login failed', error);
