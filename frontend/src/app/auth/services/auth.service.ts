@@ -19,4 +19,9 @@ export class AuthService {
   login(loginRequest: LoginRequest) {
     return this._httpClient.post<TokenResponse>(`${this._apiUrl}/usuario/login`, loginRequest);
   }
+
+  isAuthenticated(): boolean {
+    const token = document.cookie.split('; ').find((row) => row.startsWith('access_token='));
+    return !!token;
+  }
 }
