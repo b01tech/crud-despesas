@@ -29,6 +29,11 @@ app.MapScalarApiReference("/docs", options =>
     options.Title = "CRUD Despesas API";
     options.Theme = ScalarTheme.Purple;
     options.PersistentAuthentication = true;
+    options.AddPreferredSecuritySchemes("BearerAuth");
+    options.AddHttpAuthentication("BearerAuth", (auth) =>
+    {
+        auth.Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
+    });
 });
 
 app.MapAppEndpoints();
