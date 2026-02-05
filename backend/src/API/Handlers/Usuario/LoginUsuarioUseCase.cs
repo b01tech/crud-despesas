@@ -17,6 +17,6 @@ public class LoginUsuarioUseCase(IUsuarioRepository repository, IEncrypter encry
             return null;
         var token = tokenService.GenerateToken(usuario.Nome);
 
-        return new TokenResponseDto(token);
+        return new TokenResponseDto(usuario.Email, token);
     }
 }

@@ -1,3 +1,3 @@
 ﻿namespace Core.Dtos;
 
-public record TokenResponseDto(string Token);
+public record TokenResponseDto(string Email, string Token);
