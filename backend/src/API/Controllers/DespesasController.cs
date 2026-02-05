@@ -8,7 +8,7 @@ public static class DespesasController
 {
     public static void MapDespesasEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("despesas").WithTags("Despesas");
+        var group = app.MapGroup("despesas").WithTags("Despesas").RequireAuthorization();
 
         group.MapPost("/", async ([FromBody] CreateDespesaDto request, [FromServices] ICreateDespesaUseCase useCase) =>
         {
