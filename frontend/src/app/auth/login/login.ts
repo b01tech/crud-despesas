@@ -26,6 +26,7 @@ export class Login {
       this._authService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (response) => {
           document.cookie = `access_token=${response.token}; path=/`;
+          localStorage.setItem('user_email', response.email);
           this._router.navigate(['/despesas']);
         },
         error: (error) => {

@@ -25,7 +25,12 @@ export class AuthService {
     return !!token;
   }
 
+  getUserEmail(): string {
+    return localStorage.getItem('user_email') || '';
+  }
+
   logout() {
     document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    localStorage.removeItem('user_email');
   }
 }
