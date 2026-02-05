@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginRequest } from '../models/login-request';
@@ -14,6 +14,7 @@ export class Login {
   private readonly _fb = inject(FormBuilder);
   private readonly _authService = inject(AuthService);
   private readonly _router = inject(Router);
+  loginFail = signal(false);
 
   loginForm = this._fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -28,6 +29,7 @@ export class Login {
           this._router.navigate(['/despesas']);
         },
         error: (error) => {
+          this.loginFail.set(true);
           console.error('Login failed', error);
         },
       });

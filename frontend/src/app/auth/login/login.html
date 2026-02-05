@@ -33,6 +33,9 @@
       >
         Criar uma conta
       </button>
+      @if (loginFail()) {
+        <span class="text-red-500 text-sm font-thin center">Email ou senha inválidos</span>
+      }
     </form>
   </div>
 </div>
